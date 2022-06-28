@@ -12,8 +12,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     if (req.body._id == "") {
         insertRecord(req, res);
-    }
-    else {
+    } else {
         updateRecord(req, res);
     }
 })
@@ -28,8 +27,7 @@ function insertRecord(req, res) {
     employee.save((err, doc) => {
         if (!err) {
             res.redirect('employee/list');
-        }
-        else {
+        } else {
             if (err.name == "ValidationError") {
                 handleValidationError(err, req.body);
                 res.render("employee/addOrEdit", {
@@ -46,16 +44,14 @@ function updateRecord(req, res) {
     Employee.findOneAndUpdate({ _id: req.body._id, }, req.body, { new: true }, (err, doc) => {
         if (!err) {
             res.redirect('employee/list');
-        }
-        else {
+        } else {
             if (err.name == "ValidationError") {
                 handleValidationError(err, req.body);
                 res.render("employee/addOrEdit", {
                     viewTitle: 'Update Employee',
                     employee: req.body
                 });
-            }
-            else {
+            } else {
                 console.log("Error occured in Updating the records" + err);
             }
         }
@@ -87,8 +83,7 @@ router.get('/delete/:id', (req, res) => {
     Employee.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.redirect('/employee/list');
-        }
-        else {
+        } else {
             console.log("An error occured during the Delete Process" + err);
         }
     })
