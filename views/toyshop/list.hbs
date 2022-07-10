@@ -1,5 +1,5 @@
 <h3>
-    <a href="/employee" class="btn btn-danger">
+    <a href="/" class="btn btn-danger">
         <i class="fa fa-plus"> </i> Create New
     </a>
     Employee List
@@ -8,19 +8,20 @@
     <thead>
         <tr>
             <th>Full Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>City</th>
-            <th></th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         {{#each list}}
         <tr>
-            <td>{{this.fullName}}</td>
-            <td>{{this.email}}</td>
-            <td>{{this.mobile}}</td>
-            <td>{{this.city}}</td>
+            <td>{{this.Toyname}}</td>
+            <td>{{this.ImagePath}}</td>
+            <td>{{this.Price}}</td>
+            <td>{{this.Quantity}}</td>
+            <td>{{this.Description}}</td>
             <td>
                 <a href="/employee/{{this._id}}">
                     <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
