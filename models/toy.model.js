@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var validator = require("email-validator");
+// var validator = require("email-validator");
 
 var toySchema = new mongoose.Schema({
     ToyName: {
@@ -23,8 +23,8 @@ var toySchema = new mongoose.Schema({
 
 // custom validation for email
 
-employeeSchema.path('email').validate((val) => {
-    return validator.validate(val);
-}, 'Invalid Email');
+// employeeSchema.path('email').validate((val) => {
+//     return validator.validate(val);
+// }, 'Invalid Email');
 
 mongoose.model('Toy', toySchema);
