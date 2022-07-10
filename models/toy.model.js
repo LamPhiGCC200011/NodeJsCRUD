@@ -19,7 +19,7 @@ var toySchema = new mongoose.Schema({
         type: String
     }
 
-})
+});
 
 // custom validation for email
 
