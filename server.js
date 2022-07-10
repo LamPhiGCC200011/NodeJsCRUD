@@ -34,4 +34,4 @@ app.listen(port, () => {
     console.log("Server is listening on Port 3000");
 })
 
-app.use('/', employeeController);
+app.use('/toyshop', employeeController);
