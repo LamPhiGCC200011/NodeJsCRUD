@@ -24,7 +24,7 @@ app.engine('hbs', expressHandlebars({
     },
 }))
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.send('Hello world')
 })
 app.set('view engine', 'hbs');
