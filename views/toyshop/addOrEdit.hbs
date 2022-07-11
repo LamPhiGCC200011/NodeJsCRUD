@@ -1,18 +1,18 @@
 <h3>{{viewTitle}}</h3>
-<form action="/toyshop" method="POST" autocomplete="off" style ="">
-    <input type="hidden" name="_id" value="{{toy._id}}">
+<form action="/toyshop" method="POST" autocomplete="off" id = "form1" name = "form1">
+    {{!-- <input type="hidden" name="_id" value="{{toy._id}}">
     <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" name="ToyName" value="{{toy.ToyName}}" placeholder="Full Name">
         <div class="text-danger">
-            {{!-- {{employee.fullNameError}} --}}
+            {{employee.fullNameError}}
         </div>
     </div>
     <div class="form-group">
         <label>Image Path</label>
         <input type="text" class="form-control" name="ImagePath" value="{{toy.ImagePath}}" placeholder="Email">
         <div class="text-danger">
-            {{!-- {{employee.emailError}} --}}
+            {{employee.emailError}}
         </div>
     </div>
     <div class="form-row">
@@ -42,5 +42,78 @@
         <a href="/toyshop/list" class="btn btn-danger">
             <i class="fa fa-list-alt"></i>View All
         </a>
-    </div>
+    </div> --}}
+
+
+
+
+     <div class="form-group">                               
+                            <label for="lblFullName" class="col-sm-2 control-label">Full name(*):  </label>
+							<div class="col-sm-9">
+							      <input type="text" name="Cus_FullName" id="" class="form-control" placeholder="Enter Fullname"/>
+                                  <input type="hidden" name="Role" id="" class="form-control" placeholder="Enter Fullname" value ="Customer"/>
+							</div>
+                       </div> 	
+                        <div class="form-group">
+						    
+                            <label for="txtTen" class="col-sm-2 control-label">Username(*):  </label>
+							<div class="col-sm-9">
+							      <input type="text" name="Username" id="" class="form-control" placeholder="Username"/>
+							</div>
+                      </div>  
+                      
+                       <div class="form-group">   
+                            <label for="" class="col-sm-2 control-label">Password(*):  </label>
+							<div class="col-sm-9">
+							      <input type="password" name="Password" id="" class="form-control" placeholder="Password"/>
+							</div>
+                       </div>     
+                       
+                       <div class="form-group"> 
+                            <label for="" class="col-sm-2 control-label">Confirm Password(*):  </label>
+							<div class="col-sm-9">
+							      <input type="password" name="Con_Password" id="" class="form-control" placeholder="Confirm your Password"/>
+							</div>
+                       </div>     
+                       <div class="form-group">      
+                            <label for="lblEmail" class="col-sm-2 control-label">Email(*):  </label>
+							<div class="col-sm-9">
+							      <input type="text" name="Email" id=""  class="form-control" placeholder="Email"/>
+							</div>
+                       </div>  
+                       
+                        <div class="form-group">   
+                             <label for="lblDiaChi" class="col-sm-2 control-label">Address(*):  </label>
+							<div class="col-sm-9">
+							      <input type="text" name="Address" id="" class="form-control" placeholder="Address"/>
+							</div>
+                        </div>  
+                        
+                         <div class="form-group">  
+                            <label for="lblDienThoai" class="col-sm-2 control-label">Telephone(*):  </label>
+							<div class="col-sm-9">
+							      <input type="text" name="Tel" id="" class="form-control" placeholder="Telephone" />
+							</div>
+                         </div> 
+                         
+                          <div class="form-group">  
+                            <label for="lblGioiTinh" class="col-sm-2 control-label">Gender(*):  </label>
+							<div class="col-sm-3">                              
+                                      <label class="radio-inline"><input type="radio" name="Gender" value="Male" id="grpRender"  />
+                                      Male</label>
+                                    
+                                      <label class="radio-inline"><input type="radio" name="Gender" value="Female" id="grpRender" />
+                                      
+                                      Female</label>
+
+							</div>
+                          </div> 
+                          <div class="form-group" align ="center">
+						<div class="col-sm-offset-2 col-sm-8">
+						      <button type="submit"  class="btn btn-primary" name="btnRegister"><i class="fa fa-database"></i>Register</button>
+                              	<a href="/toyshop/list" class="btn btn-danger">
+                                <i class="fa fa-list-alt"></i>View All
+                                </a>
+						</div>
+                    </div>
 </form>
