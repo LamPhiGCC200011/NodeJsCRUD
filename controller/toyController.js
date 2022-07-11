@@ -44,7 +44,6 @@ function updateRecord(req, res) {
             res.redirect('toyshop/list');
         } else {
             if (err.name == "ValidationError") {
-                handleValidationError(err, req.body);
                 res.render("toyshop/addOrEdit", {
                     viewTitle: 'Update Employee',
                     toy: req.body
@@ -87,21 +86,5 @@ router.get('/delete/:id', (req, res) => {
     })
 })
 
-// function handleValidationError(err, body) {
-//     for (field in err.errors) {
-//         switch (err.errors[field].path) {
-//             case 'fullName':
-//                 body['fullNameError'] = err.errors[field].message;
-//                 break;
-
-//             case 'email':
-//                 body['emailError'] = err.errors[field].message;
-//                 break;
-
-//             default:
-//                 break;
-//         }
-//     }
-// }
 
 module.exports = router;
