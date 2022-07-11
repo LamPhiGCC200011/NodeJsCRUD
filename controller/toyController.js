@@ -31,7 +31,6 @@ function insertRecord(req, res) {
             res.redirect('toyshop/list');
         } else {
             if (err.name == "ValidationError") {
-                handleValidationError(err, req.body);
                 res.render("toyshop/addOrEdit", {
                     viewTitle: "Insert Toy",
                     toy: req.body
