@@ -1,7 +1,7 @@
 <h3>{{viewTitle}}</h3>
 <form action="/toyshop" method="POST" autocomplete="off" id = "form1" name = "form1" class="form-horizontal" role="form">
-    {{!-- <input type="hidden" name="_id" value="{{toy._id}}">
-    <div class="form-group">
+    <input type="hidden" name="_id" value="{{toy._id}}">
+    {{!-- <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" name="ToyName" value="{{toy.ToyName}}" placeholder="Full Name">
         <div class="text-danger">
@@ -51,7 +51,7 @@
                        </div> 	
                         <div class="form-group">
 						    
-                            <label for="txtTen" class="col-sm-2 control-label" style = "text-align: left;">ImagePath(*):  </label>
+                            <label for="txtImage" class="col-sm-2 control-label" style = "text-align: left;">ImagePath(*):  </label>
 							<div class="col-sm-9">
 							      <input type="text" class="form-control" name="ImagePath" value="{{toy.ImagePath}}" placeholder="Image Path">
 							</div>
