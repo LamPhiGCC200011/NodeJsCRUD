@@ -28,7 +28,7 @@ app.engine('hbs', expressHandlebars({
 //     res.send('Hello world')
 // })
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
     res.render("shops/index", {
         viewTitle: "Toy Shop"
     })
