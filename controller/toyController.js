@@ -30,13 +30,10 @@ function insertRecord(req, res) {
         if (!err) {
             res.redirect('toyshop/list');
         } else {
-            if (err.name == "ValidationError") {
-                res.render("toyshop/addOrEdit", {
-                    viewTitle: "Insert Toy",
-                    toy: req.body
-                })
-            }
-            console.log("Error occured during record insertion" + err);
+            res.render("toyshop/addOrEdit", {
+                viewTitle: "Insert Toy",
+                toy: req.body
+            })
         }
     })
 }
