@@ -27,6 +27,12 @@ app.engine('hbs', expressHandlebars({
 // app.get('/', function(req, res) {
 //     res.send('Hello world')
 // })
+
+router.get("/", (req, res) => {
+    res.render("shops/index", {
+        viewTitle: "Toy Shop"
+    })
+})
 app.set('view engine', 'hbs');
 
 const port = process.env.PORT || 3000
