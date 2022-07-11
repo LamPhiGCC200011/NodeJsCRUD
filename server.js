@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const expressHandlebars = require('express-handlebars');
-const employeeController = require('./controller/employeeController');
+const toyController = require('./controller/toyController');
 
 var app = express();
 
@@ -34,4 +34,4 @@ app.listen(port, () => {
     console.log("Server is listening on Port 3000");
 })
 
-app.use('/toyshop', employeeController);
+app.use('/toyshop', toyController);

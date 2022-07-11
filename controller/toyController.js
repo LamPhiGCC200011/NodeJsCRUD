@@ -24,6 +24,7 @@ function insertRecord(req, res) {
     toy.Price = req.body.Price;
     toy.Quantity = req.body.Quantity;
     toy.Description = req.body.Description;
+    toy.Category = req.body.Category;
 
     toy.save((err, doc) => {
         if (!err) {

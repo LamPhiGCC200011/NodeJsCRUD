@@ -17,6 +17,9 @@ var toySchema = new mongoose.Schema({
     },
     Description: {
         type: String
+    },
+    Category: {
+        type: String
     }
 
 });
