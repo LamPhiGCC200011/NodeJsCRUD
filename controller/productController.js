@@ -35,7 +35,7 @@ router.post('/doSearch', async(req, res) => {
 
     const template = handlebars.compile(fs.readFileSync('views/shops/index', 'utf-8'));
     const results = template({
-        products3: products
+        products: products
     }, {
         allowProtoMethodsByDefault: false,
         allowProtoPropertiesByDefault: false
