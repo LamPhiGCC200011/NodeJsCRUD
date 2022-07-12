@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const expressHandlebars = require('express-handlebars');
 const toyController = require('./controller/toyController');
+const productController = require('./controller/productController');
 
 var app = express();
 
@@ -43,5 +44,6 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log("Server is listening on Port 3000");
 })
+app.use('/', productController);
 
 app.use('/toyshop', toyController);
