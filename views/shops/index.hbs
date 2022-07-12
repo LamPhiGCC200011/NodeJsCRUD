@@ -1,19 +1,13 @@
-      {{!-- {{#each list}}
-        <div class="row">
-    <div class="col-md-4">
-        <div class="thumbnail">
-        <a href="">
-            <img src="https://www.w3schools.com/w3images/lights.jpg" alt="Lights" style="width:100%">
-            <div class="caption">
-            <p>{{ this.Price}}</p>
-            <p>{{ this.Quantity}}</p>
-            <p>{{ this.Description}}</p>
-            <p>{{ this.Category}}</p>
-            </div>
-        </a>
+<div>
+    <form action="/doSearch" method ="POST">
+        <div class = "form-group">
+            <input type="text" class ="form-control" name="search">
         </div>
-    </div>
-{{/each}}     --}}
+        <div class = "form-group">
+            <input type="submit" class ="form-control" name="submit">
+        </div>
+    </form>
+</div>
 
 <div class="container" style ="padding:100px 0 0 0">
             <div class="row">

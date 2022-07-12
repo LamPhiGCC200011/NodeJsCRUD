@@ -4,6 +4,24 @@ const Toy = mongoose.model('Toy');
 const router = express.Router();
 
 
+router.get('/', async(req, res) => {
+    let query = Toy.find()
+    if (req.query.Name == null && req.query.Name == '') {
+        query = query.regex('Name', new RegExp('req.query.Name', 'i'))
+    }
+    try {
+        const toys = await query.exec()
+        res.render('shops/index', {
+            toys: toys,
+            searchOptions: req.query
+        })
+    } catch {
+        res.render('/')
+    }
+
+})
+
+
 router.get('/', (req, res) => {
     Toy.find((err, docs) => {
         if (!err) {
