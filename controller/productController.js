@@ -4,7 +4,7 @@ const Toy = mongoose.model('Toy');
 const router = express.Router();
 
 
-router.get('/', async(req, res) => {
+router.get('/doSearch', async(req, res) => {
     let query = Toy.find()
     if (req.query.Name == null && req.query.Name == '') {
         query = query.regex('Name', new RegExp('req.query.Name', 'i'))
