@@ -1,4 +1,4 @@
-      {{#each list}}
+      {{!-- {{#each list}}
         <div class="row">
     <div class="col-md-4">
         <div class="thumbnail">
@@ -13,8 +13,32 @@
         </a>
         </div>
     </div>
-{{/each}}    
+{{/each}}     --}}
 
+<div class="container" style ="padding:100px 0 0 0">
+            <div class="row">
+                {{#each list}}
+                <div class="col-md-4">
+                    <div class="card-mb-4"> 
+                        <img src="https://www.w3schools.com/w3images/lights.jpg" alt="" class = "card-img-top" width="80px" height="270px">
+                        <div class ="card-body">
+                            <h5 class = "card-title">{{ this.ToyName }}</h5>
+                            <p class = "card-text">{{ this.Quantity }}</p>
+                            <p class = "card-text">{{ this.Description }}</p>
+                            <p class = "card-text">{{ this.Category }}</p>
+                            <div class = "d-flex justify-content-between align-item-center">
+                                <a href="" class="btn btn-dark">View details</a>
+                                <span class = "h5 mt-auto">{{ this.Price }} $
+                                </span>
+                            
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+    </div>
 
 
 
