@@ -33,11 +33,6 @@ app.engine('hbs', expressHandlebars({
 //     res.send('Hello world')
 // })
 
-app.get("/", (req, res) => {
-    res.render("shops/index", {
-        viewTitle: "Toy Shop"
-    })
-})
 app.set('view engine', 'hbs');
 
 const port = process.env.PORT || 3000
