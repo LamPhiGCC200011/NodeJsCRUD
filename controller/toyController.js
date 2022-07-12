@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Toy = mongoose.model('Toy');
 const router = express.Router();
+const path = require('path');
 
 
 router.get("/", (req, res) => {
@@ -10,7 +11,20 @@ router.get("/", (req, res) => {
     })
 })
 
-router.post("/", (req, res) => {
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/images');
+    },
+    filename: (req, file, cb) => {
+        console.log(file)
+        cb(null, Date.now() + path.extname(file.originalname));
+    },
+});
+
+const upload = multer({ storage: storage })
+
+router.post("/", upload.single("ImagePath"), (req, res) => {
     if (req.body._id == "") {
         insertRecord(req, res);
     } else {
@@ -21,7 +35,7 @@ router.post("/", (req, res) => {
 function insertRecord(req, res) {
     var toy = new Toy();
     toy.ToyName = req.body.ToyName;
-    toy.ImagePath = req.body.ImagePath;
+    toy.ImagePath = req.file.filename;
     toy.Price = req.body.Price;
     toy.Quantity = req.body.Quantity;
     toy.Description = req.body.Description;

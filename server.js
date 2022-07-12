@@ -8,15 +8,17 @@ const productController = require('./controller/productController');
 
 var app = express();
 
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
+app.use(bodyParser.json());
 app.use(express.static('public'))
+
 app.use('/css', express.static(__dirname + 'public'))
 
 
-app.use(bodyParser.json());
+
 app.set('views', path.join(__dirname, '/views/'))
 
 app.engine('hbs', expressHandlebars({
@@ -28,10 +30,6 @@ app.engine('hbs', expressHandlebars({
         allowProtoMethodsByDefault: true,
     },
 }))
-
-// app.get('/', function(req, res) {
-//     res.send('Hello world')
-// })
 
 app.set('view engine', 'hbs');
 

@@ -1,4 +1,4 @@
-<form action="/toyshop" method="POST" autocomplete="off" id = "form1" name = "form1" class="form-horizontal" role="form">
+<form action="/toyshop" method="POST" id = "form1" name = "form1" class="form-horizontal" role="form" enctype = "multipart/form-data">
     <input type="hidden" name="_id" value="{{toy._id}}">
              <div class="form-group">
                         <label for="lblFullName" class="col-sm-12 control-label" style = "text-align: Center;">Add New Product  </label>
@@ -13,7 +13,7 @@
 						    
                             <label for="txtImage" class="col-sm-2 control-label" style = "text-align: left;">ImagePath(*):  </label>
 							<div class="col-sm-9">
-							      <input type="file" class="form-control" name="ImagePath" value="{{toy.ImagePath}}" placeholder="Image Path">
+							      <input type="file" class="form-control" name="ImagePath" id = "ImagePath" value="{{toy.ImagePath}}" placeholder="Image Path">
 							</div>
                       </div>  
                       
