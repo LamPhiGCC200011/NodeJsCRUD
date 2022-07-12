@@ -21,6 +21,9 @@ const router = express.Router();
 
 // })
 router.post('/doSearch', async(req, res) => {
+    let client = await MongoClient.connect(url, {
+        useUnifiedTopology: true
+    });
     let db = client.db('Toy');
     let collection = db.collection('toys');
     let name = new RegExp(req.body.search);
