@@ -4,7 +4,7 @@ const Toy = mongoose.model('Toy');
 const router = express.Router();
 
 
-router.get('/list', (req, res) => {
+router.get('/', (req, res) => {
     Toy.find((err, docs) => {
         if (!err) {
             res.render("shops/index", {
