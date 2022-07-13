@@ -63,7 +63,7 @@ app.get("/doSearch", async(req, res) => {
         allowProtoMethodsByDefault: false,
         allowProtoPropertiesByDefault: false
     })
-    res.render('layouts/mainLayout', {
+    res.render('shops/doSearch', {
         content: result
     })
 })
