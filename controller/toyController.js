@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const Toy = mongoose.model('Toy');
 const router = express.Router();
 const path = require('path');
-
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb+srv://lamphi:Phi01273333943@cluster0.hbmss.mongodb.net/Toy?retryWrites=true&w=majority";
+const fs = require('fs');
+var flash = require('connect-flash');
 
 router.get("/", (req, res) => {
     res.render("toyshop/addOrEdit", {
@@ -54,21 +57,58 @@ function insertRecord(req, res) {
 }
 
 function updateRecord(req, res) {
-    Toy.findOneAndUpdate({ _id: req.body._id, }, req.body, { new: true }, (err, doc) => {
-        if (!err) {
+    // Toy.findOneAndUpdate({ _id: req.body._id, }, req.body, { new: true }, (err, doc) => {
+    //     if (!err) {
+    //         res.redirect('toyshop/list');
+    //     } else {
+    //         if (err.name == "ValidationError") {
+    //             res.render("toyshop/addOrEdit", {
+    //                 viewTitle: 'Update Employee',
+    //                 toy: req.body
+    //             });
+    //         } else {
+    //             console.log("Error occured in Updating the records" + err);
+    //         }
+    //     }
+    // })
+    const id = req.params.id;
+    const body = req.body;
+
+    const ToyName = body.ToyName;
+    const Price = body.Price;
+    const Quantity = body.Quantity;
+    const Description = body.Description;
+    const Category = body.Category;
+
+    const updates = {
+        ToyName,
+        Price,
+        Quantity,
+        Description,
+        Category
+    };
+
+    if (req.file) {
+        const image = req.file.filename;
+        updates.ImagePath = image;
+    }
+
+
+    Toy.findOneAndUpdate(id, {
+            $set: updates
+        }, {
+            new: true
+        }).then(post => {
             res.redirect('toyshop/list');
-        } else {
-            if (err.name == "ValidationError") {
-                res.render("toyshop/addOrEdit", {
-                    viewTitle: 'Update Employee',
-                    toy: req.body
-                });
-            } else {
-                console.log("Error occured in Updating the records" + err);
-            }
-        }
-    })
-}
+        })
+        .catch(err => {
+            return req.flash('error', 'Unable to edit article');
+            res.render("toyshop/addOrEdit", {
+                viewTitle: 'Update Employee',
+                toy: req.body
+            });
+        });
+};
 
 router.get('/list', (req, res) => {
     Toy.find((err, docs) => {
@@ -91,7 +131,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.get('/delete/:id', (req, res) => {
+router.get('/delete/:id', async(req, res) => {
     Toy.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.redirect('/toyshop/list');
