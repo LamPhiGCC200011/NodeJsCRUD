@@ -42,7 +42,7 @@ router.post('/doSearch', async(req, res) => {
 
     })
 
-    res.render('layouts/mainLayout', {
+    res.render('shops/doSearch', {
         content: result
     })
 
