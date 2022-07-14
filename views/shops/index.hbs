@@ -1,5 +1,7 @@
-<div style ="margin: 100px;">
- <form action="/doSearch" method ="POST">
+
+<div class="container">
+<div>
+    <form action="/doSearch" method ="POST" style = "margin:200px">
         {{!-- <div class = "form-group">
             <input type="text" class ="form-control" name="search">
         </div>
@@ -10,11 +12,8 @@
         <input type="text" class ="search-txt" name ="search" placeholder = "Type to search">
         <button class = "search-btn" type = "submit" name = "submit"> <i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
-</form>
-
-
-
-<div class="container" style ="padding:10px 0 0 0; margin:150px;">
+    </form>
+</div>
             <div class="row" style ="padding:10px 0 0 0;">
                 {{#each list}}
                 <div class="col-md-4">
