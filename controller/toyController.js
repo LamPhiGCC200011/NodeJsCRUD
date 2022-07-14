@@ -57,57 +57,80 @@ function insertRecord(req, res) {
 }
 
 function updateRecord(req, res) {
-    // Toy.findOneAndUpdate({ _id: req.body._id, }, req.body, { new: true }, (err, doc) => {
-    //     if (!err) {
-    //         res.redirect('toyshop/list');
-    //     } else {
-    //         if (err.name == "ValidationError") {
-    //             res.render("toyshop/addOrEdit", {
-    //                 viewTitle: 'Update Employee',
-    //                 toy: req.body
-    //             });
-    //         } else {
-    //             console.log("Error occured in Updating the records" + err);
-    //         }
-    //     }
-    // })
     const id = req.params.id;
     const body = req.body;
 
-    const ToyName = body.ToyName;
-    const Price = body.Price;
-    const Quantity = body.Quantity;
-    const Description = body.Description;
-    const Category = body.Category;
-
-    const updates = {
+    ToyName = body.ToyName;
+    Price = body.Price;
+    Quantity = body.Quantity;
+    Description = body.Description;
+    Category = body.Category;
+    const toy = {
         ToyName,
         Price,
         Quantity,
         Description,
         Category
-    };
+    }
 
     if (req.file) {
         const ImagePath = req.file.filename;
-        updates.ImagePath = ImagePath;
+        toy.ImagePath = ImagePath;
     }
+    Toy.findOneAndUpdate({ _id: req.body._id, }, toy, { new: true }, (err, doc) => {
 
-
-    Toy.findOneAndUpdate(id, {
-            $set: updates
-        }, {
-            new: true
-        }).then(post => {
+        if (!err) {
             res.redirect('toyshop/list');
-        })
-        .catch(err => {
-            return req.flash('error', 'Unable to edit article');
-            res.render("toyshop/addOrEdit", {
-                viewTitle: 'Update Employee',
-                toy: req.body
-            });
-        });
+        } else {
+            if (err.name == "ValidationError") {
+                res.render("toyshop/addOrEdit", {
+                    viewTitle: 'Update Employee',
+                    toy: req.body
+                });
+            } else {
+                console.log("Error occured in Updating the records" + err);
+            }
+        }
+    })
+
+    //     _id: req.body._id;
+    //     const id = req.params.id;
+    //     const body = req.body;
+
+    //     const ToyName = body.ToyName;
+    //     const Price = body.Price;
+    //     const Quantity = body.Quantity;
+    //     const Description = body.Description;
+    //     const Category = body.Category;
+
+    //     const updates = {
+    //         ToyName,
+    //         Price,
+    //         Quantity,
+    //         Description,
+    //         Category
+    //     };
+
+    //     if (req.file) {
+    //         const ImagePath = req.file.filename;
+    //         updates.ImagePath = ImagePath;
+    //     }
+
+
+    //     Toy.findOneAndUpdate(id, {
+    //         $set: updates
+    //     }, {
+    //         new: true
+    //     }).then(post => {
+    //         res.redirect('toyshop/list');
+    //     })
+    //     .catch(err => {
+    //         return req.flash('error', 'Unable to edit article');
+    //         res.render("toyshop/addOrEdit", {
+    //             viewTitle: 'Update Employee',
+    //             toy: req.body
+    //         });
+    //     });
 };
 
 router.get('/list', (req, res) => {
