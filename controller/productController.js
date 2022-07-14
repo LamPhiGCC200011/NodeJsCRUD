@@ -48,5 +48,25 @@ router.post('/doSearch', async(req, res) => {
 
 })
 
+router.get('/about', (req, res) => {
+    Toy.find((err, docs) => {
+        if (!err) {
+            res.render("about/about", {
+                list: docs
+            })
+        }
+    })
+})
+
+router.get('/contactus', (req, res) => {
+    Toy.find((err, docs) => {
+        if (!err) {
+            res.render("about/contactus", {
+                list: docs
+            })
+        }
+    })
+})
+
 
 module.exports = router;

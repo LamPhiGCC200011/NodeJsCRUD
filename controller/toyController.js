@@ -89,8 +89,8 @@ function updateRecord(req, res) {
     };
 
     if (req.file) {
-        const image = req.file.filename;
-        updates.ImagePath = image;
+        const ImagePath = req.file.filename;
+        updates.ImagePath = ImagePath;
     }
 
 
@@ -130,6 +130,17 @@ router.get('/:id', (req, res) => {
         }
     })
 })
+router.get('/detail/:id', (req, res) => {
+    Toy.findById(req.params.id, (err, docs) => {
+        if (!err) {
+            res.render("details/detail", {
+                toy: docs
+            })
+        }
+    })
+})
+
+
 
 router.get('/delete/:id', async(req, res) => {
     Toy.findByIdAndRemove(req.params.id, (err, doc) => {
